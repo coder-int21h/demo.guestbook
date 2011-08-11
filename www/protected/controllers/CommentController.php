@@ -12,7 +12,7 @@
  */
 class CommentController
 {
-    //put your code here
+    
 }
 
 ?>

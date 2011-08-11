@@ -10,9 +10,37 @@
  *
  * @author Admin
  */
-class Comment
+class Comment extends CActiveRecord
 {
-    //put your code here
+
+    public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
+    }
+
+    public function tableName()
+    {
+        return 'comment';
+    }
+
+    public function rules()
+    {
+        return array(
+            array('content', 'required'),
+            array('content', 'length', 'max' => 1000, 'min' => 5),
+        );
+    }
+
+    /**
+     * @return array relational rules.
+     */
+    public function relations()
+    {
+        return array(
+            'post' => array(self::HAS_MANY, 'Post', 'post_id'),
+        );
+    }
+
 }
 
 ?>
