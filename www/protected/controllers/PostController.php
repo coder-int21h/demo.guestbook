@@ -8,11 +8,35 @@
 /**
  * Description of PostController
  *
- * @author Admin
+ * @author coder.int21h@gmail.com
  */
-class PostController
+class PostController extends CController
 {
-    //put your code here
+
+    public $_id;
+    public $_model;
+    public $defaultAction = 'index';
+
+    public function actionIndex()
+    {
+        
+    }
+
+    public function actionCreate()
+    {
+        
+    }
+    
+    public function actionUpdate()
+    {
+        
+    }
+    
+    public function actionDelete()
+    {
+        
+    }
+
 }
 
 ?>

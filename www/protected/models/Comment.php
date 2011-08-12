@@ -8,7 +8,7 @@
 /**
  * Description of Comment
  *
- * @author Admin
+ * @author coder.int21h@gmail.com
  */
 class Comment extends CActiveRecord
 {

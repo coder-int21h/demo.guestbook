@@ -8,7 +8,7 @@
 /**
  * Description of Post
  *
- * @author Admin
+ * @author coder.int21h@gmail.com
  */
 class Post extends CActiveRecord
 {
@@ -23,6 +23,9 @@ class Post extends CActiveRecord
         return 'post';
     }
 
+    /**
+     * @return array relational rules.
+     */
     public function relations()
     {
         return array(

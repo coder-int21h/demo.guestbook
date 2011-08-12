@@ -8,7 +8,7 @@
 /**
  * Description of User
  *
- * @author Admin
+ * @author coder.int21h@gmail.com
  */
 class User extends CActiveRecord
 {
@@ -17,6 +17,7 @@ class User extends CActiveRecord
      * @var string repeat password
      */
     public $password2;
+
     /**
      * @var string verification code captcha
      */
@@ -32,6 +33,9 @@ class User extends CActiveRecord
         return 'user';
     }
 
+    /**
+     * @return array relational rules.
+     */
     public function relations()
     {
         return array(

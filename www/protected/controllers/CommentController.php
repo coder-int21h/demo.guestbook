@@ -8,11 +8,28 @@
 /**
  * Description of CommentController
  *
- * @author Admin
+ * @author coder.int21h@gmail.com
  */
-class CommentController
+class CommentController extends CController
 {
-    
+
+    public $defaultAction = 'create';
+
+    public function actionCreate()
+    {
+        
+    }
+
+    public function actionUpdate()
+    {
+        
+    }
+
+    public function actionDelete()
+    {
+        
+    }
+
 }
 
 ?>
