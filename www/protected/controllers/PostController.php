@@ -19,22 +19,63 @@ class PostController extends CController
 
     public function actionIndex()
     {
-        
+        $criteria = new CDbCriteria;
+        $criteria->order = 'created DESC';
+        $pages = new CPagination(Post::model()->count($criteria));
+        $pages->pageSize = 20;
+        $pages->applyLimit($criteria);
+        $post = Post::model()->findAll($criteria);
+        $this->render('index', array(
+            'post' => $post,
+            'pages' => $pages,
+        ));
     }
 
     public function actionCreate()
     {
-        
+        $post = new Post();
+        if (isset($_POST['Post']))
+        {
+            $post->attributes = $_POST['Post'];
+            $post->user_id = 1;
+            if ($post->save())
+                $this->redirect(array('index', 'id' => $post->id));
+        }
+        $this->render('create', array('post' => $post));
     }
-    
+
     public function actionUpdate()
     {
-        
+        $post = $this->loadModel();
+        if (isset($_POST['Post']))
+        {
+            $post->attribute = $_POST['Post'];
+            if ($post->save())
+                $this->redirect(array('index', 'id' => $post->id));
+        }
+        $this->render('update', array('post' => $post));
     }
-    
+
     public function actionDelete()
     {
-        
+        $this->loadModel()->delete();
+        if (!isset($_GET['ajax']))
+            $this->redirect(array('/post/index'));
+    }
+
+    public function loadModel()
+    {
+        if ($this->_model === null)
+        {
+            if (isset($_GET['id']))
+            {
+                $condition = '';
+                $this->_model = Post::model()->findByPk($_GET['id'], $condition);
+            }
+            if ($this->_model === null)
+                throw new CHttpException(404, 'The requested page does not exist.');
+        }
+        return $this->_model;
     }
 
 }

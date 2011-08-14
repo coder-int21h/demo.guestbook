@@ -29,17 +29,21 @@ class Post extends CActiveRecord
     public function relations()
     {
         return array(
-            'author' => array(self::BELONGS_TO, 'User', 'author_id'),
+            'author' => array(self::BELONGS_TO, 'User', 'user_id'),
         );
     }
 
     public function rules()
     {
         return array(
-            array('content, title', 'required'),
-            array('title', 'length', 'max' => 64, 'min' => 3),
-            array('content', 'length', 'max' => 1000, 'min' => 10),
+            array('content', 'required'),
+            array('content', 'length', 'max' => 1000, 'min' => 5),
         );
+    }
+    
+    public function safeAttributes()
+    {
+        return array('content');
     }
 
 }

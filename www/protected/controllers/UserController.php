@@ -30,7 +30,7 @@ class UserController extends CController
 
     public function actionLogin()
     {
-        
+
     }
 
     public function actionRegistration()

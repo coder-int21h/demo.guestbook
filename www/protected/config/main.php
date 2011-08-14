@@ -15,6 +15,10 @@ return array(
         'db' => array(
             'connectionString' => 'sqlite:protected/data/guestbook.db',
         ),
+    /**
+     * 'class' => 'CDbAuthManager',
+     * 'connectionID' => 'db',
+     */
     ),
 );
 ?>
