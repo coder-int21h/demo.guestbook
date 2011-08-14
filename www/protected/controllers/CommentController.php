@@ -13,21 +13,86 @@
 class CommentController extends CController
 {
 
+    /**
+     *
+     * @var type 
+     */
+    public $_model;
+    public $_postId;
+
+    /**
+     *
+     * @var type 
+     */
     public $defaultAction = 'create';
 
+    /**
+     * 
+     */
     public function actionCreate()
     {
-        
+        $comment = new Comment();
+        if (isset($_GET['id']))
+        {
+            if (isset($_POST['Comment']))
+            {
+                $comment->post_id = $_GET['id'];
+                $comment->attributes = $_POST['Comment'];
+                if ($comment->validate('create'))
+                {
+                    if ($comment->save())
+                        $this->redirect(array('/post/index', 'id' => $comment->id));
+                }
+            }
+            $this->render('index', array('comment' => $comment));
+        }
+        $this->redirect(Yii::app()->homeUrl);
     }
 
+    /**
+     * 
+     */
     public function actionUpdate()
     {
-        
+        $comment = $this->loadModel();
+        if (isset($_POST['Comment']))
+        {
+            $comment->attributes = $_POST['Comment'];
+            if ($comment->save())
+                $this->redirect(array('/post/index', 'id' => $comment->post_id));
+        }
+        $this->render('update', array('comment' => $comment));
     }
 
+    /**
+     * 
+     */
     public function actionDelete()
     {
-        
+        $this->loadModel()->delete();
+        if (!isset($_GET['ajax']))
+            $this->redirect(array('/post/index'));
+    }
+
+    /**
+     *
+     * @return type 
+     */
+    public function loadModel()
+    {
+        if ($this->_model === null)
+        {
+            if (isset($_GET['post_id']))
+            {
+                $criteria = new CDbCriteria();
+                $criteria->condition = 'post_id=:postID';
+                $criteria->params = array('postID' => ($_GET['post_id']));
+                $this->_model = Comment::model()->find($criteria);
+            }
+            if ($this->_model === null)
+                throw new CHttpException(404, 'The requested page does not exist777');
+        }
+        return $this->_model;
     }
 
 }
