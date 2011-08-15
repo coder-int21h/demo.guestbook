@@ -13,8 +13,16 @@
 class UserController extends CController
 {
 
+    /**
+     *
+     * @var type 
+     */
     public $defaultAction = 'login';
 
+    /**
+     *
+     * @return type 
+     */
     public function actions()
     {
         return array(
@@ -28,16 +36,59 @@ class UserController extends CController
         );
     }
 
+    /**
+     *  Не коректно работает нужно переделать
+     */
     public function actionLogin()
     {
-
+        $user = new User('login');
+        if (!empty($_POST['User']))
+        {
+            $user->attributes = $_POST['User'];
+            if ($user->validate())
+            {
+                $this->redirect(Yii::app()->homeUrl);
+            }
+            else
+            {
+                $this->renderPartial('4040'); // Надо поправить
+            }
+        }
     }
 
+    /**
+     * 
+     */
     public function actionRegistration()
     {
-        
+        $user = new User('registration');
+        if (!Yii::app()->user->isGuest)
+        {
+            $this->redirect(Yii::app()->homeUrl);
+        }
+        if (!empty($_POST['User']))
+        {
+            $user->attributes = $_POST['User'];
+            if ($user->validate())
+            {
+                if ($user->model()->count("login = :login", array(':login' => $user->login)))
+                {
+                    $user->addError('login', 'Selected login is already taken, please choose another.');
+                    //$this->render('registration', array('user' => $user));
+                }
+                else
+                {
+                    $user->save();
+                    $this->render('registration_ok');
+                }
+            }
+        }
+        $this->render('registration', array('user' => $user));
     }
 
+    /**
+     * 
+     */
     public function actionLogout()
     {
         Yii::app()->user->logout();

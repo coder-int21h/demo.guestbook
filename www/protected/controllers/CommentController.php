@@ -31,14 +31,14 @@ class CommentController extends CController
      */
     public function actionCreate()
     {
-        $comment = new Comment();
+        $comment = new Comment('create');
         if (isset($_GET['id']))
         {
             if (isset($_POST['Comment']))
             {
                 $comment->post_id = $_GET['id'];
                 $comment->attributes = $_POST['Comment'];
-                if ($comment->validate('create'))
+                if ($comment->validate())
                 {
                     if ($comment->save())
                         $this->redirect(array('/post/index', 'id' => $comment->id));

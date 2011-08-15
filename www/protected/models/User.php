@@ -57,7 +57,7 @@ class User extends CActiveRecord
 
     public function safeAttributes()
     {
-        return array('login', 'password', 'password2', 'verifuCode');
+        return array('login', 'password', 'password2', 'verifyCode');
     }
 
     public function attributeLabels()
@@ -74,7 +74,7 @@ class User extends CActiveRecord
     {
         if (!$this->hasErrors())
         {
-            $identity = new UserIdentity($this->login, $this->password2);
+            $identity = new UserIdentity($this->login, $this->password);
             $identity->authenticate();
             switch ($identity->errorCode)
             {

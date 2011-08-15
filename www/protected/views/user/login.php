@@ -1,4 +1,3 @@
-<p>Hello <?php echo Yii::app()->user->name; ?></p>
 <div class="user">
     <form method="post" action="index.php?r=user/login">
 
@@ -30,12 +29,3 @@
 
     </form>
 </div>
-<?php
-    if (!empty($post))
-        foreach ($post as $key => $val)
-        {
-            $this->renderPartial('_list', array(
-                'post' => $val,
-            ));
-        }
-?>
