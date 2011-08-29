@@ -91,6 +91,22 @@ class PostController extends CController
         return $this->_model;
     }
 
+    public function actionTest()
+    {
+        if (Yii::app()->user->checkAccess('guest'))
+        {
+            echo 'Hello, I`m Guest';
+        }
+        if (Yii::app()->user->checkAccess('user'))
+        {
+            echo 'Hello, I`m User';
+        }
+        if (Yii::app()->user->checkAccess('administrator'))
+        {
+            echo 'Hello, I`m Administrator';
+        }
+    }
+
     /**
      *
      * @param type $_id

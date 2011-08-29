@@ -12,13 +12,25 @@ return array(
      * 
      */
     'components' => array(
+        /**
+         * 
+         */
         'db' => array(
             'connectionString' => 'sqlite:protected/data/guestbook.db',
         ),
-    /**
-     * 'class' => 'CDbAuthManager',
-     * 'connectionID' => 'db',
-     */
+        /**
+         * 
+         */
+        'user' => array(
+            'class' => 'WebUser',
+        ),
+        /**
+         * 
+         */
+        'authManager' => array(
+            'class' => 'PhpAuthManager',
+            'defaultRoles' => array('guest'),
+        ),
     ),
 );
 ?>
