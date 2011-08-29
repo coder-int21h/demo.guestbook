@@ -1,0 +1,516 @@
+html {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+body{
+    position: relative;
+    width: 900px;
+
+    min-height: 700px;
+    margin: 0px auto;
+    background: url(../images/winfon.jpg) 0 0 repeat;
+}
+
+#title{
+    position: relative;
+    height: 100px;
+}
+#title .user-blok{
+    float: left;
+}
+#title .user-blok .login-form{
+    position: relative;
+    width: 200px;
+    height: 70px;
+    margin: 15px 0px 0px 30px;
+    float: left;
+}
+#title .user-blok .login-form .row {
+    position: relative;
+    padding: 0px 0px 3px 0px;
+    width: 170px;
+    height: 17px;
+}
+#title .user-blok .login-form .row .row-name {
+    color: #298dcd;
+    float: right;
+    font: normal 12px Tahoma;
+    padding: 2px 0px 0px 0px;
+}
+#title .user-blok .login-form .row .row-input input{
+    width: 100px;
+    height: 15px;
+    float: right;
+    border: solid 1px #298dcd;
+    font: normal 12px Tahoma;
+}
+#title .user-blok .login-form .submit-row input{
+    color: #ffffff;
+    width: 50px;
+    height: 17px;
+    float: right;
+    margin:  2px 20px 0px 0px;
+    padding: 0px 0px 2px 0px;
+    border: none;
+    font: bold 11px Verdana;
+    background: #298dcd;
+}
+#title .user-blok .login-form .registration-row{
+
+}
+#title .user-blok .login-form .registration-row a{
+    color: #000000;
+    float: right;
+    padding: 4px 15px 0px 0px;
+    font: bold 11px Verdana;
+    letter-spacing: -1px;
+    text-decoration: none;
+}
+#title .user-blok .login-form .registration-row a:hover{
+    color: #990000;
+}
+
+
+
+#title .user-blok .login-status{
+    position: relative;
+    width: 200px;
+    height: 70px;
+    margin: 15px 0px 0px 30px;
+    float: left;
+}
+#title .user-blok .login-status .greeting{
+    position: relative;
+    padding: 5px 0px 0px 0px;
+}
+#title .user-blok .login-status .greeting p{
+    color: #000000;
+    font: bold 10px Verdana;
+    letter-spacing: -1px;
+    text-align: center;
+}
+#title .user-blok .login-status .username{
+    position: relative;
+    margin: -4px 0px 0px 0px;
+    height: 28px;
+    background: transparent; 
+}
+#title .user-blok .login-status .username p{
+    color: #298dcd;
+    text-align: center;
+    font: normal 26px Arial;
+    letter-spacing: -1px;
+}
+#title .user-blok .login-status .status{
+    position: relative;
+    padding: 5px 10px 0px 0px;
+}
+#title .user-blok .login-status .status a{
+    color: #ffffff;
+    padding: 0px 4px 0px 5px;
+    float: right;
+    font: bold 10px Verdana;
+    text-decoration: none;   
+}
+#title .user-blok .login-status .status a:hover{
+    color: #000000;
+}
+
+
+#title .logo{
+    float: right;
+    margin: 20px 50px 0px 0px;
+}
+#title .logo h1{
+    color: #000000;
+    font: bold 40px Georgia,'Times New Roman',times,serif;
+    letter-spacing: -1px;
+}
+
+
+.decor {
+    position: static;
+    width: 112%;
+    height: 2px;
+    background: #ffffff;
+    margin: 0px 0px 0px -54px;
+}
+
+
+#content{
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+    margin: 20px 0px 0px 0px;
+    padding: 0px 0px 10px 0px;
+}
+#content .create-new-post{
+    padding: 0px 0px 0px 50px;
+}
+#content .create-new-post a{
+    font: bold 16px Verdana;
+    letter-spacing: -1px;
+    color: #ffffff;
+    text-decoration: none;
+}
+#content .create-new-post a:hover{
+    color: #990000;
+}
+#content .post{
+    position: relative;
+    width: 800px;
+    margin: 5px auto 10px auto;
+    padding: 5px 0px 5px 0px;
+    background: #ffffff;
+}
+#content .post .author-data{
+    position: relative;
+    width: 780px;
+    margin: 0px auto;
+    padding: 2px 0px;
+    background: #298dcd;
+}
+#content .post .author-data p{
+    font: bold 12px Tahoma;
+}
+#content .post .author-data .author{
+    padding: 0px 0px 0px 10px;
+    color: #ffffff;
+}
+#content .post .author-data .date{
+    float: right;
+    color: #ffffff;
+    padding: 0px 10px 0px 0px;
+}
+#content .post .author-data .date p{
+    font: bold 12px Tahoma;
+}
+#content .post .adminwork{
+    position: relative;
+    width: 780px;
+    margin: 0px auto;
+    padding: 0px 0px 0px 0px;
+}
+#content .post .adminwork a{
+    color: #990000;
+    font: bold 13px Tahoma;
+    text-decoration: none;
+}
+#content .post .adminwork a:hover{
+    color: #ff0;
+}
+#content .post .adminwork .create-comment{
+    width: 200px;
+    height: 20px;
+    padding: 0px 0px 0px 10px;
+    background: transparent;
+}
+#content .post .adminwork .edit-post{
+    padding: 0px 15px 0px 0px;
+    float: right;
+}
+#content .post .adminwork .delete-post{
+    padding: 0px 15px 0px 0px;
+    float: right;
+}
+#content .post .userwork{
+    position: relative;
+    width: 780px;
+    height: 17px;
+    margin: 0px auto 0px auto;
+    padding: 0px 0px 0px 0px;
+}
+#content .post .userwork a{
+    color: #990000;
+    font: bold 13px Tahoma;
+    text-decoration: none;
+}
+#content .post .userwork a:hover{
+    color: #ff0;
+}
+#content .post .userwork .delete-post{
+    padding: 0px 15px 0px 0px;
+    float: right;
+}
+#content .post .userwork .edit-post{
+    padding: 0px 15px 0px 0px;
+    float: right;
+}
+#content .post .post-content{
+    position: relative;
+    width: 780px;
+    margin: 5px auto 0px auto;
+    text-indent: 15px;
+}
+#content .post .post-content p{
+    color: #000000;
+    text-align: justify;
+    font: italic 16px Ariel;
+}
+#content .post .comment{
+    position: relative;
+    width: 780px;
+    padding: 0px 0px 0px 0px;
+    margin: 5px auto 0px auto;
+    background: #E6EFC2;
+}
+#content .post .comment .admin-data{
+    position: relative;
+    height: 16px;
+    padding: 2px 0px 0px 0px;
+    border-bottom: solid 1px #ffffff;
+    font: bold 12px Tahoma;
+}
+#content .post .comment .admin-data .admin-title{
+    padding: 0px 0px 0px 10px;
+    color: #000000;
+}
+#content .post .comment .admin-data .admin-date{
+    float: right;
+    color: #000000;
+    padding: 0px 10px 0px 0px;
+}
+#content .post .comment .comment-work{
+    position: relative;
+    width: 780px;
+    height: 17px;
+    margin: 0px auto 0px auto;
+    padding: 0px 0px 0px 0px;
+}
+#content .post .comment .comment-work a{
+    color: #990000;
+    font: bold 13px Tahoma;
+    text-decoration: none;
+}
+#content .post .comment .comment-work a:hover {
+    color: #9aafe5;
+}
+#content .post .comment .comment-work .edit-comment{
+    padding: 0px 15px 0px 0px;
+    float: right;
+}
+#content .post .comment .comment-work .delete-comment{
+    padding: 0px 15px 0px 0px;
+    float: right;
+}
+#content .post .comment .comment-content{
+    position: relative;
+    margin: 3px auto 0px auto;
+    padding: 0px 5px 5px 5px;
+}
+#content .post .comment .comment-content p{
+    font: normal 13px Tahoma;
+    text-align: justify;
+    text-indent: 15px;
+}
+
+#content .new-post{
+    position: relative;
+    width: 700px;
+    height: 360px;
+    padding: 20px 0px 40px 0px;
+    margin: 40px auto;
+    background: #ffffff;
+    border: double 3px #000000;
+}
+#content .new-post h2{
+    font: bold 16px Tahoma;
+    text-align: center;
+    color: #298dcd;
+}
+#content .new-post .mini-decor{
+    position: relative;
+    width: 80%;
+    height: 2px;
+    margin: 2px auto 5px auto;
+    background: #9aafe5;
+}    
+#content .new-post .create-form form{
+    margin: 20px auto;
+    text-align: center;
+}
+#content .new-post .create-form textarea{
+    border: none;
+    background: #E6EFC2;
+}
+#content .new-post .create-form input{
+    width: 80px;
+    height: 22px;
+    letter-spacing: -1px;
+    font: bold 12px Verdana;
+    margin: 20px auto;
+    background: #DDD;
+}
+#content .new-post .create-form .create-rules{
+    padding: 0px 0px 20px 0px;
+    font: italic 13px Tahoma;
+    text-align: center;
+}
+#content .new-post .create-form .create-err{
+    position: relative;
+    width: 90%;
+    margin: 0px auto 20px auto;
+    padding: 5px 0px 5px 0px;
+    background: #FFA0A2;
+    border: solid 1px #000000;
+    font: bold italic 12px Verdana;
+    text-align: center;
+}
+
+#content .registration-form {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 40px auto;
+    padding: 15px 0px 0px 0px;
+    border: 3px double #000000; 
+    background: #ffffff;
+}
+#content .registration-form h2{
+    text-align: center;
+    color: #298dcd;
+    font: normal 20px Verdana;
+    letter-spacing: -1px;
+}
+#content .registration-form .rules-reg{
+    position: relative;
+    width: 90%;
+    margin: 15px auto;
+    padding: 10px 0px 10px 0px;
+    background: #E5F1F4;
+    border: solid 1px #000000;
+}
+#content .registration-form .rules-reg p{
+    font: italic 12px Verdana;
+    text-align: center;
+}
+#content .registration-form .error-reg{
+    position: relative;
+    width: 90%;
+    margin: 0px auto;
+    padding: 5px 0px 5px 0px;
+    background: #FFA0A2;
+    border: solid 1px #000000;
+}
+#content .registration-form .error-reg p{
+    font: bold italic 12px Verdana;
+    text-align: center;
+}
+#content .registration-form .error-reg ul{
+    padding: 5px 0px 5px 0px;
+}
+#content .registration-form .error-reg li{
+    font: normal 12px Tahoma;
+    text-align: center;
+
+}
+#content .registration-form .mini-decor {
+    position: relative;
+    width: 80%;
+    height: 2px;
+    margin: 2px auto 5px auto;
+    background: #9aafe5;
+}
+#content .registration-form .form-field {
+    width: 90%;
+    height: 25px;
+    margin: 0px auto;
+    padding: 1px 0px 1px 0px;
+}
+#content .registration-form .form-field .form-name{
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+#content .registration-form .form-field .form-name p{
+    font: normal 16px Arial;
+    text-align: right;
+}
+#content .registration-form .form-field .form-inp{
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+#content .registration-form .form-field .form-inp input{
+    width: 100px;
+    border: none;
+    background: #E6EFC2;
+    font: bold 12px Verdana;
+    letter-spacing: -1px;
+    text-align: center;
+}
+#content .registration-form .form-captcha{
+    position: relative;
+    width: 90%;
+    height: 80px;
+    margin: 20px auto;
+    padding: 1px 0px 1px 0px;
+}
+#content .registration-form .form-captcha p{
+    text-align: center;
+    color: #990000;
+    font: italic 11px Verdana;
+}
+#content .registration-form .form-captcha img{
+    position: absolute;
+    top: 20px;
+    left: 65px;
+    border: solid 1px #ff0;
+}
+#content .registration-form .form-captcha input{
+    position: absolute;
+    width: 90px;
+    height: 18px;
+    top: 22px;
+    left: 200px;
+    border: solid 1px #298dcd;
+    text-align: center;
+    font: bold 14px Verdana;
+}
+#content .registration-form .form-captcha a{
+    position: absolute;
+    top: 48px;
+    left: 200px;
+    text-decoration: none;
+    color: #000000;
+    font: bold 10px Verdana;
+}
+#content .registration-form .form-captcha a:hover{
+    color: #C00;
+}
+
+#content .registration-form .form-submit{
+    width: 82px;
+    height: 30px;
+    margin: 0px auto;
+}
+#content .registration-form .form-submit input{
+    width: 80px;
+    height: 22px;
+    letter-spacing: -1px;
+    font: bold 12px Verdana;
+    background: #DDD;
+}
+
+#content .registration-form .home-reg{
+    margin: 0px 30px 0px 0px;
+    float: right;
+
+}
+#content .registration-form .home-reg a{
+    color: #298dcd;
+    font: bold 14px Tahoma;
+
+}
+
+#content .registration-form .home-reg a:hover{
+    color: #000000;
+    font: bold 14px Tahoma;
+}
+#footer{
+    position: relative;
+    width: 100%;
+    height: 70px;
+    background: url(../images/winfon.jpg) 0 0 repeat;
+}

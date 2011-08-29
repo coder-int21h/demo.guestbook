@@ -96,6 +96,23 @@ class User extends CActiveRecord
             }
         }
     }
+    
+    protected function beforeSave()
+    {
+        if (parent::beforeSave())
+        {
+            if ($this->isNewRecord)
+            {
+                $this->created = date('d M Y H:i');
+                $this->user_id = Yii::app()->user->id;
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 }
 

@@ -38,13 +38,30 @@ class Comment extends CActiveRecord
     public function relations()
     {
         return array(
-            'post' => array(self::HAS_MANY, 'Post', 'post_id'),
+            'posts' => array(self::BELONGS_TO, 'Post', 'post_id'),
         );
     }
-    
-     public function safeAttributes()
+
+    public function safeAttributes()
     {
         return array('content', 'post_id');
+    }
+
+    protected function beforeSave()
+    {
+        if (parent::beforeSave())
+        {
+            if ($this->isNewRecord)
+            {
+                $this->created = date('d M Y H:i');
+                $this->user_id = Yii::app()->user->id;
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }

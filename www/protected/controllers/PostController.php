@@ -37,7 +37,7 @@ class PostController extends CController
         if (isset($_POST['Post']))
         {
             $post->attributes = $_POST['Post'];
-            $post->user_id = 1;
+            $post->user_id = Yii::app()->user->id;
             if ($post->save())
                 $this->redirect(array('index', 'id' => $post->id));
         }
@@ -49,7 +49,7 @@ class PostController extends CController
         $post = $this->loadModel();
         if (isset($_POST['Post']))
         {
-            $post->attribute = $_POST['Post'];
+            $post->attributes = $_POST['Post'];
             if ($post->save())
                 $this->redirect(array('index', 'id' => $post->id));
         }
@@ -61,6 +61,19 @@ class PostController extends CController
         $this->loadModel()->delete();
         if (!isset($_GET['ajax']))
             $this->redirect(array('/post/index'));
+    }
+
+    public function commentSearch($num)
+    {
+        $criteria = new CDbCriteria;
+        $criteria->select = 'content';
+        $criteria->condition = 'post_id=:postID';
+        $criteria->params = array('postID' => $num);
+        $comment = Comment::model()->find($criteria);
+        if (isset($comment))
+        {
+            return $comment;
+        }
     }
 
     public function loadModel()
@@ -78,6 +91,11 @@ class PostController extends CController
         return $this->_model;
     }
 
+    /**
+     *
+     * @param type $_id
+     * @return array
+     */
 }
 
 ?>

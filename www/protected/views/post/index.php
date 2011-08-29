@@ -1,41 +1,64 @@
-<p>Hello <?php echo Yii::app()->user->name; ?></p>
-<div class="user">
-    <form method="post" action="index.php?r=user/login">
 
-        <div class="row">
-            <div class="row-input">
-                <input type="text" name="User[login]" />
-            </div>
-            <div class="row-name">
-                <p>login:</p>
-            </div>
-        </div>
+<div id="title">
 
-        <div class="row">
-            <div class="row-input">
-                <input type="password" name="User[password]" />
-            </div>
-            <div class="row-name">
-                <p>password:</p>
-            </div>
-        </div>
 
-        <div class="submit-row">
-            <input type="submit" class="button" name="submit" value="login" />
-        </div>
-        <div class="registration-row">
-            <?php echo CHtml::link('Registration', '/index.php?r=user/registration'); ?>
-        </div>
-            
+    <div class="user-blok">
 
-    </form>
-</div>
-<?php
+        <?php if (Yii::app()->user->isGuest): ?>
+
+            <!-- Если пользователь гость то ему доступна форма авторизации -->
+            <?php $this->renderPartial('_login'); ?>
+
+        <?php else : ?>
+
+            <!-- Если залогинен то видит свой status-bar -->
+            <?php $this->renderPartial('_statusbar') ?>
+
+        <?php endif; ?>
+
+    </div><!-- user-blok (End) -->
+
+
+    <div class="logo">
+        <h1><?php echo CHtml::encode(Yii::app()->name); ?></h1>
+    </div><!-- logo (End) -->
+
+
+</div><!-- title (End) -->
+
+
+<div class ="decor">
+</div><!-- decor (End) -->
+
+
+<div id ="content">
+
+    <!-- Если пользователь не гость, то ему доступен функционал создать новый пост -->
+    <?php if (!Yii::app()->user->isGuest): ?>
+
+        <div class="create-new-post">
+            <a href="index.php?r=post/create">Create New Post</a>
+        </div><!-- create-new-post (End) -->
+
+    <?php endif; ?>
+
+    
+    <?php
     if (!empty($post))
         foreach ($post as $key => $val)
         {
-            $this->renderPartial('_list', array(
+            $this->renderPartial('_post', array(
                 'post' => $val,
             ));
         }
-?>
+    ?>
+
+</div><!-- content (End) -->
+
+
+<div class ="decor">
+</div><!-- decor (End) -->
+
+
+<div id="footer">
+</div><!-- footer (End) -->

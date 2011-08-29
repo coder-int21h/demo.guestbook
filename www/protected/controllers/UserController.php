@@ -45,14 +45,16 @@ class UserController extends CController
         if (!empty($_POST['User']))
         {
             $user->attributes = $_POST['User'];
+//            $user->scenario = 'login';
             if ($user->validate())
             {
-                $this->redirect(Yii::app()->homeUrl);
+                $this->render('post/index'); //redirect(Yii::app()->homeUrl);
             }
-            else
-            {
-                $this->renderPartial('4040'); // Надо поправить
-            }
+            //           else
+            //           {
+            //               $this->renderPartial('4040'); // Надо поправить
+            //           }
+            $this->redirect(Yii::app()->homeUrl);
         }
     }
 
@@ -80,6 +82,7 @@ class UserController extends CController
                 {
                     $user->save();
                     $this->render('registration_ok');
+                    exit;
                 }
             }
         }
@@ -93,6 +96,11 @@ class UserController extends CController
     {
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
+    }
+
+    public function actionTest()
+    {
+        $this->render('registration_ok');
     }
 
 }

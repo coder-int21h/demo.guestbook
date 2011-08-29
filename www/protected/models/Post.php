@@ -30,6 +30,7 @@ class Post extends CActiveRecord
     {
         return array(
             'author' => array(self::BELONGS_TO, 'User', 'user_id'),
+            
         );
     }
 
@@ -44,6 +45,23 @@ class Post extends CActiveRecord
     public function safeAttributes()
     {
         return array('content');
+    }
+    
+    protected function beforeSave()
+    {
+        if (parent::beforeSave())
+        {
+            if ($this->isNewRecord)
+            {
+                $this->created = date('d M Y H:i');
+                $this->user_id = Yii::app()->user->id;
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }

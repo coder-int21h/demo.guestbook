@@ -44,9 +44,8 @@ class CommentController extends CController
                         $this->redirect(array('/post/index', 'id' => $comment->id));
                 }
             }
-            $this->render('index', array('comment' => $comment));
+            $this->render('create', array('comment' => $comment));
         }
-        $this->redirect(Yii::app()->homeUrl);
     }
 
     /**
