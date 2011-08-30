@@ -31,20 +31,24 @@ class CommentController extends CController
      */
     public function actionCreate()
     {
-        $comment = new Comment('create');
-        if (isset($_GET['id']))
+        /* Если пользователь administrator то ему доступно создание комментария */
+        if (Yii::app()->user->checkAccess('administrator'))
         {
-            if (isset($_POST['Comment']))
+            $comment = new Comment('create');
+            if (isset($_GET['id']))
             {
-                $comment->post_id = $_GET['id'];
-                $comment->attributes = $_POST['Comment'];
-                if ($comment->validate())
+                if (isset($_POST['Comment']))
                 {
-                    if ($comment->save())
-                        $this->redirect(array('/post/index', 'id' => $comment->id));
+                    $comment->post_id = $_GET['id'];
+                    $comment->attributes = $_POST['Comment'];
+                    if ($comment->validate())
+                    {
+                        if ($comment->save())
+                            $this->redirect(array('/post/index', 'id' => $comment->id));
+                    }
                 }
+                $this->render('create', array('comment' => $comment));
             }
-            $this->render('create', array('comment' => $comment));
         }
     }
 
@@ -53,14 +57,18 @@ class CommentController extends CController
      */
     public function actionUpdate()
     {
-        $comment = $this->loadModel();
-        if (isset($_POST['Comment']))
+        /* Если пользователь administrator то ему доступно редакция комментария */
+        if (Yii::app()->user->checkAccess('administrator'))
         {
-            $comment->attributes = $_POST['Comment'];
-            if ($comment->save())
-                $this->redirect(array('/post/index', 'id' => $comment->post_id));
+            $comment = $this->loadModel();
+            if (isset($_POST['Comment']))
+            {
+                $comment->attributes = $_POST['Comment'];
+                if ($comment->save())
+                    $this->redirect(array('/post/index', 'id' => $comment->post_id));
+            }
+            $this->render('update', array('comment' => $comment));
         }
-        $this->render('update', array('comment' => $comment));
     }
 
     /**
@@ -68,9 +76,13 @@ class CommentController extends CController
      */
     public function actionDelete()
     {
-        $this->loadModel()->delete();
-        if (!isset($_GET['ajax']))
-            $this->redirect(array('/post/index'));
+        /* Если пользователь administrator то ему доступно удаление комментария */
+        if (Yii::app()->user->checkAccess('administrator'))
+        {
+            $this->loadModel()->delete();
+            if (!isset($_GET['ajax']))
+                $this->redirect(array('/post/index'));
+        }
     }
 
     /**

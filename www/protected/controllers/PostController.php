@@ -33,27 +33,34 @@ class PostController extends CController
 
     public function actionCreate()
     {
-        $post = new Post();
-        if (isset($_POST['Post']))
+        if (Yii::app()->user->checkAccess('user'))
         {
-            $post->attributes = $_POST['Post'];
-            $post->user_id = Yii::app()->user->id;
-            if ($post->save())
-                $this->redirect(array('index', 'id' => $post->id));
+            $post = new Post();
+            if (isset($_POST['Post']))
+            {
+                $post->attributes = $_POST['Post'];
+                $post->user_id = Yii::app()->user->id;
+                if ($post->save())
+                    $this->redirect(array('index', 'id' => $post->id));
+            }
+            $this->render('create', array('post' => $post));
         }
-        $this->render('create', array('post' => $post));
     }
 
     public function actionUpdate()
     {
-        $post = $this->loadModel();
-        if (isset($_POST['Post']))
+        if (Yii::app()->user->checkAccess('user'))
         {
-            $post->attributes = $_POST['Post'];
-            if ($post->save())
-                $this->redirect(array('index', 'id' => $post->id));
+            $post = $this->loadModel();
+            if (isset($_POST['Post']))
+            {
+                $post->attributes = $_POST['Post'];
+
+                if ($post->save())
+                    $this->redirect(array('index', 'id' => $post->id));
+            }
+            $this->render('update', array('post' => $post));
         }
-        $this->render('update', array('post' => $post));
     }
 
     public function actionDelete()
@@ -63,19 +70,21 @@ class PostController extends CController
             $this->redirect(array('/post/index'));
     }
 
+    /**
+     * Возвращает массивом ряд из таблицы 'comment' по id = $num;
+     * 
+     * @param integer
+     * @return  array 
+     */
     public function commentSearch($num)
     {
         $criteria = new CDbCriteria;
-        $criteria->select = 'content';
         $criteria->condition = 'post_id=:postID';
         $criteria->params = array('postID' => $num);
         $comment = Comment::model()->find($criteria);
-        if (isset($comment))
-        {
-            return $comment;
-        }
+        return $comment;
     }
-
+    
     public function loadModel()
     {
         if ($this->_model === null)
@@ -91,27 +100,6 @@ class PostController extends CController
         return $this->_model;
     }
 
-    public function actionTest()
-    {
-        if (Yii::app()->user->checkAccess('guest'))
-        {
-            echo 'Hello, I`m Guest';
-        }
-        if (Yii::app()->user->checkAccess('user'))
-        {
-            echo 'Hello, I`m User';
-        }
-        if (Yii::app()->user->checkAccess('administrator'))
-        {
-            echo 'Hello, I`m Administrator';
-        }
-    }
-
-    /**
-     *
-     * @param type $_id
-     * @return array
-     */
 }
 
 ?>

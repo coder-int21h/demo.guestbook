@@ -1,30 +1,6 @@
 <?php if (!Yii::app()->user->isGuest): ?>
 
-    <div id="title">
-
-
-        <div class="user-blok">
-            <?php if (Yii::app()->user->isGuest): ?>
-                <!-- Если пользователь гость то ему доступна форма авторизации -->
-                <?php $this->renderPartial('_login'); ?>
-            <?php else : ?>
-                <!-- Если залогинен то видит свой status-bar -->
-                <?php $this->renderPartial('_statusbar') ?>
-            <?php endif; ?>
-        </div><!-- user-blok (End) -->
-
-
-        <div class="logo">
-            <h1><?php echo CHtml::encode(Yii::app()->name); ?></h1>
-        </div><!-- logo (End) -->
-
-    </div><!-- title (End) -->
-
-
-    <div class="decor">
-    </div><!-- decor (End) -->
-
-
+    <!-- CONTENT -->
     <div id="content">
 
         <div class="new-post">
@@ -62,13 +38,7 @@
         </div><!-- new-post (END) -->
 
     </div><!-- content (End) -->
-    
-    <div class="decor">
-    </div><!-- decor (End) -->
 
-    <div id="footer">
-    </div><!-- footer (End) -->
-    
 <?php endif; ?>
 
 

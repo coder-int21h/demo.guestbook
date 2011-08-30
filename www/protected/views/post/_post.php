@@ -1,6 +1,9 @@
+<!-- Сразу проверяю наличие комментария к посту -->
 <?php $comment = PostController::commentSearch($post->id); ?>
 
+<!-- Заголовок текущего поста автор/дата создания -->
 <div class="post">
+
     <div class="author-data">
         <div class="date">
             <p><?php echo $post->created; ?></p>
@@ -8,111 +11,46 @@
         <div class="author">
             <p><?php echo $post->author->login; ?></p>
         </div>
-    </div>
+    </div><!-- author-data (End) -->
 
 
-
-
-    <?php $a = 0; ?><!-- ВРЕМЕННО -->
-    <?php if ($a !== 0): ?><!-- ВРЕМЕННО -->
-        <div class="adminwork">
-            <div class="delete-post">
-                <a href="index.php?r=post/delete&amp;id=<?php echo $post->id; ?>">Delete</a> 
-            </div>
-            <div class="edit-post">
-                <a href="index.php?r=post/update&amp;id=<?php echo $post->id; ?>">Edit</a>
-            </div>
-
-            <!-- Если коментария к посту еще нет то можно создать -->
-            <?php if ($comment == NULL): ?>
-
-                <div class="create-comment">
-                    <a href="index.php?r=comment/create&amp;id=<?php echo $post->id; ?>">Create Comment</a>
-
-                </div><!-- create-comment (End) -->
-
-            <?php else: ?>
-
-                <div class="create-comment"> </div><!-- empty-block (End) -->
-
-            <?php endif; ?>
-
-
-        </div><!-- admin-work (End)-->
-
-    <?php endif; ?><!-- ВРЕМЕННО -->
-
-
-
-<!-- Если id user и id автора записи совпадает то есть возможность edit/delete -->
-    <?php if (Yii::app()->user->id == $post->user_id): ?>
-
-        <?php if (!isset($comment->content)): ?>
-
-            <div class="userwork">
-
-                <div class="delete-post">
-                    <a href="index.php?r=post/delete&amp;id=<?php echo $post->id; ?>">Delete</a> 
-                </div><!-- delete-post (End) -->
-
-                <div class="edit-post">
-                    <a href="index.php?r=post/update&amp;id=<?php echo $post->id; ?>">Edit</a>
-                </div><!-- edit-post (End) -->
-
-            </div><!-- userwork (End) -->   
-
-        <?php endif; ?>
-
+    <!-- Если пользователь администратор то ему также доступны операции над любым постом -->
+    <?php if (Yii::app()->user->checkAccess('administrator')): ?>
+        <?php
+        $this->renderPartial('_post/adminwork', array(
+            'post' => $post,
+            'comment' => $comment,
+        ));
+        ?>
     <?php endif; ?>
-            
-            
-    <!--  Само тело Post  -->
+
+
+    <!-- Если не администратор доступна панель user -->
+    <?php if (!Yii::app()->user->checkAccess('administrator')): ?>
+        <?php
+        $this->renderPartial('_post/userwork', array(
+            'post' => $post,
+            'comment' => $comment,
+        ));
+        ?>
+    <?php endif; ?>
+
+
+    <!--  Само содержимое Post  -->
     <div class="post-content">
         <p><?php echo $post->content; ?></p>
     </div><!-- post-content (End) -->
 
-    
-    <!-- Блок комментария  -->
+
+
+    <!-- Если есть к текущему посту комментарий то выводится блок комментария -->
     <?php if (isset($comment->content)): ?>
-    
-    
-        <div class="comment">
-
-            <div class="admin-data">
-                <div class="admin-date">
-                    <p>26 Jul 2011 21:55</p>
-                </div>
-                <div class="admin-title">
-                    <p>Administrator</p>
-                </div>
-            </div>
-
-
-            <?php if ($a !== 0): ?><!-- ВРЕМЕННО ОТКЛЮЧЕН АДМИН -->
-
-                <div class="comment-work">
-
-                    <div class="delete-comment">
-                        <a href="index.php?r=comment/delete&amp;post_id=<?php echo $post->id; ?>">Delete</a>
-                    </div>
-
-                    <div class="edit-comment">
-                        <a href="index.php?r=comment/update&amp;post_id=<?php echo $post->id; ?>">Edit</a>
-                    </div>
-
-                </div><!--comment-work (End) -->
-
-            <?php endif; ?><!-- ВРЕМЕННО ОТКЛЮЧЕН АДМИН -->
-
-
-            <!-- ���� ���� ����������� -->        
-            <div class="comment-content">
-                <p><?php echo $comment->content; ?></p>
-            </div>
-
-        </div><!-- comment (End) -->
+        <?php
+        $this->renderPartial('_post/comment', array(
+            'post' => $post,
+            'comment' => $comment,
+        ));
+        ?>
     <?php endif; ?>
+
 </div>
-<!-- -------------------------------------------------------------------- -->
-<!-- ------------------------- ����� ����� post ------------------------- -->
-<!-- -------------------------------------------------------------------- -->

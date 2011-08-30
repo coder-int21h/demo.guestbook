@@ -23,8 +23,10 @@ body{
     position: relative;
     width: 200px;
     height: 70px;
-    margin: 15px 0px 0px 30px;
+    margin: 10px 0px 0px 30px;
+    padding: 7px 0px 0px 0px;
     float: left;
+    background: url(../images/user-blok-background.png) 0 0 repeat;
 }
 #title .user-blok .login-form .row {
     position: relative;
@@ -77,8 +79,10 @@ body{
     position: relative;
     width: 200px;
     height: 70px;
-    margin: 15px 0px 0px 30px;
+    margin: 12px 0px 0px 30px;
+    padding: 3px 0px 0px 0px;
     float: left;
+    background: url(../images/user-blok-background.png) 0 0 repeat;
 }
 #title .user-blok .login-status .greeting{
     position: relative;
@@ -141,7 +145,7 @@ body{
 #content{
     position: relative;
     width: 100%;
-    min-height: 700px;
+    min-height: 650px;
     margin: 20px 0px 0px 0px;
     padding: 0px 0px 10px 0px;
 }
@@ -479,7 +483,6 @@ body{
 #content .registration-form .form-captcha a:hover{
     color: #C00;
 }
-
 #content .registration-form .form-submit{
     width: 82px;
     height: 30px;
@@ -492,7 +495,6 @@ body{
     font: bold 12px Verdana;
     background: #DDD;
 }
-
 #content .registration-form .home-reg{
     margin: 0px 30px 0px 0px;
     float: right;
@@ -503,14 +505,30 @@ body{
     font: bold 14px Tahoma;
 
 }
-
 #content .registration-form .home-reg a:hover{
     color: #000000;
     font: bold 14px Tahoma;
 }
+
+
 #footer{
     position: relative;
     width: 100%;
     height: 70px;
     background: url(../images/winfon.jpg) 0 0 repeat;
+}
+#footer .ft-icons{
+    position: relative;
+    float: right;
+}
+#footer .ft-icons p{
+    margin: 20px 20px 0px 10px;
+    float: right;
+}
+#footer .ft-icons .icon-css {
+
+
+}
+#footer .ft-icons .icon-html {
+
 }

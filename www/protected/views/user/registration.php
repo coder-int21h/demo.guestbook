@@ -1,12 +1,3 @@
-<!-- title -->
-<div id="title">
-    <div class="logo">
-        <h1><?php echo CHtml::encode(Yii::app()->name); ?></h1>
-    </div>
-</div><!-- title (End) -->
-<!-- End title -->
-
-
 <!-- content -->
 <div id="content">
     <div class="registration-form">
@@ -87,5 +78,4 @@
     </div><!-- registration-form (End) -->
 
 </div> <!-- content (End) -->
-
 <!-- End content -->

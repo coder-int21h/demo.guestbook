@@ -7,6 +7,8 @@
 
 /**
  * Description of User
+ * Создает экземпляр User класса CActiveRecord
+ * Модель таблицы User 
  *
  * @author coder.int21h@gmail.com
  */
@@ -14,11 +16,13 @@ class User extends CActiveRecord
 {
 
     /**
+     * Переменная для поля проверки пароля
      * @var string repeat password
      */
     public $password2;
 
     /**
+     * Переменная для капчи
      * @var string verification code captcha
      */
     public $verifyCode;
@@ -28,12 +32,17 @@ class User extends CActiveRecord
         return parent::model($className);
     }
 
+    /**
+     * Возвращает название таблицы
+     * @return string; 
+     */
     public function tabName()
     {
         return 'user';
     }
 
     /**
+     * Возвращает масивом релятивные связи с таблицей Post
      * @return array relational rules.
      */
     public function relations()
@@ -43,6 +52,10 @@ class User extends CActiveRecord
         );
     }
 
+    /**
+     * Возвращает массивом правила проверки
+     * @return array validation rules; 
+     */
     public function rules()
     {
         return array(
@@ -55,11 +68,19 @@ class User extends CActiveRecord
         );
     }
 
+    /**
+     * Список безопасно присваиваемых атрибутов 
+     * @return array;
+     */
     public function safeAttributes()
     {
         return array('login', 'password', 'password2', 'verifyCode');
     }
 
+    /**
+     * Возвращает массивом синонимы атрибутов
+     * @return array labels atribute
+     */
     public function attributeLabels()
     {
         return array(
@@ -70,6 +91,13 @@ class User extends CActiveRecord
         );
     }
 
+    /**
+     * Функция проверки на соответствие логин/пароль используется при проверки
+     * сценария 'login'
+     * 
+     * @param type $attribute
+     * @param type $params 
+     */
     public function authenticate($attribute, $params)
     {
         if (!$this->hasErrors())
@@ -96,7 +124,11 @@ class User extends CActiveRecord
             }
         }
     }
-    
+
+    /**
+     * До записи создает текущие дата/время и добавляет к атрибутам
+     * @return boolean;
+     */
     protected function beforeSave()
     {
         if (parent::beforeSave())
@@ -104,7 +136,7 @@ class User extends CActiveRecord
             if ($this->isNewRecord)
             {
                 $this->created = date('d M Y H:i');
-                $this->user_id = Yii::app()->user->id;
+                $this->role = 'user';
             }
             return true;
         }
