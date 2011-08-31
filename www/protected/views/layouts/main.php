@@ -26,12 +26,27 @@
             </div><!-- user-blok (End) -->
 
             <div class="logo">
-                <h1><?php echo CHtml::encode(Yii::app()->name); ?></h1>
-            </div><!-- logo (End) -->
+
+                <h1><a href="index.php?r=post/index" alt="logo demo.guestbook"><?php echo CHtml::encode(Yii::app()->name); ?></a></h1>
+
+                <div class="logo-decor">
+
+                    <div class="logo-decor-left">
+                    </div><!-- logo-decor-left (End) -->
+
+                    <div class="logo-decor-right">
+                    </div><!-- logo-decor-right (End) -->
+
+                    <div class="author">
+                        <a href="#" >coder.int21h@gmail.com</a>
+                    </div><!-- author (End) -->
+                </div><!-- logo (End) -->
+
+            </div><!-- logo-decor (End) -->
 
         </div><!-- title (End) -->
 
-        
+
         <div class ="decor">
         </div><!-- decor (End) -->
 
@@ -41,6 +56,7 @@
 
         <div class ="decor">
         </div><!-- decor (End) -->
+
 
         <div id="footer">
             <div class="ft-icons">

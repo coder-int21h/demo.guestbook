@@ -5,11 +5,21 @@
 <div class="post">
 
     <div class="author-data">
+        
         <div class="date">
             <p><?php echo $post->created; ?></p>
         </div>
+        
         <div class="author">
-            <p><?php echo $post->author->login; ?></p>
+            <!-- Если пользователь administraator то доступен просмотр профиля -->
+            <?php if (Yii::app()->user->checkAccess('administrator')): ?>
+                <p><a href='index.php?r=user/profil&login=<?php echo $post->author->login; ?> '> <?php echo $post->author->login; ?></a></p>
+            
+                <!-- Если пользователь не админ, то функционал чужого профиля отсутствует -->
+            <?php else: ?>
+                <p><?php echo $post->author->login; ?></p>
+            <?php endif; ?>
+
         </div>
     </div><!-- author-data (End) -->
 

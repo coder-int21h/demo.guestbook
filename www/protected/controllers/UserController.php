@@ -13,6 +13,8 @@
 class UserController extends CController
 {
 
+    public $_login = 0;
+
     /**
      *
      * @var type 
@@ -45,17 +47,12 @@ class UserController extends CController
         if (!empty($_POST['User']))
         {
             $user->attributes = $_POST['User'];
-//            $user->scenario = 'login';
             if ($user->validate())
             {
                 $this->render('post/index'); //redirect(Yii::app()->homeUrl);
             }
-            //           else
-            //           {
-            //               $this->renderPartial('4040'); // Надо поправить
-            //           }
-            $this->redirect(Yii::app()->homeUrl);
         }
+        $this->redirect(Yii::app()->homeUrl);
     }
 
     /**
@@ -76,7 +73,6 @@ class UserController extends CController
                 if ($user->model()->count("login = :login", array(':login' => $user->login)))
                 {
                     $user->addError('login', 'Selected login is already taken, please choose another.');
-                    //$this->render('registration', array('user' => $user));
                 }
                 else
                 {
@@ -98,6 +94,60 @@ class UserController extends CController
         $this->redirect(Yii::app()->homeUrl);
     }
 
+    /**
+     * 
+     */
+    public function actionProfil()
+    {
+
+        if (Yii::app()->user->checkAccess('administrator'))
+        {
+
+            /* Если администратор то доступен для просмотра статус любого user */
+            if (isset($_GET['login']))
+            {
+                $this->_login = $_GET['login'];
+                $criteria = new CDbCriteria();
+                $criteria->condition = 'login=:ID';
+                $criteria->params = array('ID' => $this->_login);
+                $user = User::model()->find($criteria);
+
+                $condition = 'user_id=:ID';
+                $parms = array('ID' => $user->id);
+                $post = Post::model()->count($condition, $parms);
+
+                $this->render('profil2', array(
+                    'post' => $post,
+                    'user' => $user,
+                ));
+            }
+        }
+        else
+        {
+
+            /* Если просто user то доступен свой профиль */
+            if (Yii::app()->user->checkAccess('user'))
+            {
+                $condition = 'user_id=:ID';
+                $params = array('ID' => Yii::app()->user->id);
+                $post = Post::model()->count($condition, $params);
+                $user = User::model()->findByPk(Yii::app()->user->id);
+                $this->render('profil', array(
+                    'post' => $post,
+                    'user' => $user,
+                ));
+            }
+            else
+            {
+                /* Если другой то на главную */
+                $this->redirect(Yii::app()->homeUrl);
+            }
+        }
+    }
+
+    /**
+     * 
+     */
     public function actionTest()
     {
         $this->render('registration_ok');

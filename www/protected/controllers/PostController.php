@@ -22,7 +22,7 @@ class PostController extends CController
         $criteria = new CDbCriteria;
         $criteria->order = 'created DESC';
         $pages = new CPagination(Post::model()->count($criteria));
-        $pages->pageSize = 20;
+        $pages->pageSize = 10;
         $pages->applyLimit($criteria);
         $post = Post::model()->findAll($criteria);
         $this->render('index', array(

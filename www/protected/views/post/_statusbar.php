@@ -10,6 +10,20 @@
         <p><?php echo Yii::app()->user->name; ?></p>
     </div>
     
+    <?php if(Yii::app()->user->checkAccess('administrator')): ?>
+
+    <div class="admin-mark">
+
+        
+
+        <div class="mini-status">
+            <p>administrator</p>
+        </div><!-- mini-status (End) -->
+
+    </div><!-- admin-mark (End) -->
+
+    <?php endif; ?>
+    
     
     <div class="status">
 

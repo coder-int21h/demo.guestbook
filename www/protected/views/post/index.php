@@ -19,4 +19,16 @@
         }
     ?>
 
+    <div class="pagination">
+        <?php
+        $this->widget('CLinkPager', array(
+            'pages' => $pages,
+            'maxButtonCount' => 5, // максимальное вол-ко кнопок <- 1..2..3..4..5 ->
+            'header' => '', // заголовок над листалкой
+            'prevPageLabel' => '<<',
+            'nextPageLabel' => '>>',
+        ));
+        ?>
+    </div><!-- pagination (End) -->
+        
 </div><!-- content (End) -->

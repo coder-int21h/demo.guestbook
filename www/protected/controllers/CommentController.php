@@ -69,6 +69,10 @@ class CommentController extends CController
             }
             $this->render('update', array('comment' => $comment));
         }
+        else
+        {
+            $this->redirect(array('/post/index', 'id' => $comment->post_id));
+        }
     }
 
     /**
