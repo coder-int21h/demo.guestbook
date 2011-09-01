@@ -125,7 +125,7 @@ class UserController extends CController
         else
         {
 
-            /* Если просто user то доступен свой профиль */
+            /* Если просто user то доступен только свой профиль */
             if (Yii::app()->user->checkAccess('user'))
             {
                 $condition = 'user_id=:ID';
@@ -139,7 +139,7 @@ class UserController extends CController
             }
             else
             {
-                /* Если другой то на главную */
+                /* Если гость то на главную */
                 $this->redirect(Yii::app()->homeUrl);
             }
         }

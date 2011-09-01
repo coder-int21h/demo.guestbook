@@ -7,7 +7,6 @@
 
 /**
  * Description of User
- * Создает экземпляр User класса CActiveRecord
  * Модель таблицы User 
  *
  * @author coder.int21h@gmail.com
