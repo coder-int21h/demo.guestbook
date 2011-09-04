@@ -36,7 +36,7 @@
 
                 <br>
                 <?php echo CHtml::submitButton('Create', array('id' => 'submit')); ?>
-
+                
                 <?php $this->endWidget(); ?>
 
             </div><!-- create-form (End) -->

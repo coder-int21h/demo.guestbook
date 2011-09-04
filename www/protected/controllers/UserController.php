@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of UserController
  *
@@ -16,14 +11,13 @@ class UserController extends CController
     public $_login = 0;
 
     /**
-     *
-     * @var type 
+     * @var CController действие по умолчанию.
      */
     public $defaultAction = 'login';
 
     /**
-     *
-     * @return type 
+     * Обявляет классы действия.
+     * @return array 
      */
     public function actions()
     {
@@ -39,7 +33,8 @@ class UserController extends CController
     }
 
     /**
-     *  Не коректно работает нужно переделать
+     *  Метод входа на сайт
+     *  Метод в котором обрабатываются данные из формы авторизации
      */
     public function actionLogin()
     {
@@ -49,14 +44,16 @@ class UserController extends CController
             $user->attributes = $_POST['User'];
             if ($user->validate())
             {
-                $this->render('post/index'); //redirect(Yii::app()->homeUrl);
+                $this->render('post/index');
             }
         }
         $this->redirect(Yii::app()->homeUrl);
     }
 
     /**
-     * 
+     * Метод регистрации.
+     * Выводит форму для регистрации пользователя и проверяет
+     * данные которые прийдут с неё.
      */
     public function actionRegistration()
     {
@@ -86,7 +83,7 @@ class UserController extends CController
     }
 
     /**
-     * 
+     * Метод выход с сайта.
      */
     public function actionLogout()
     {
@@ -95,21 +92,26 @@ class UserController extends CController
     }
 
     /**
-     * 
+     * Метод просмотра профиля user.
+     * Administrator - может видеть профиль любого user
+     * User - может видеть только собственный профиль.
      */
     public function actionProfil()
     {
-
+        /* Если администратор то доступен для просмотра статус любого user */
         if (Yii::app()->user->checkAccess('administrator'))
         {
 
-            /* Если администратор то доступен для просмотра статус любого user */
+            /* Если указан логин user */
             if (isset($_GET['login']))
             {
                 $this->_login = $_GET['login'];
-                $criteria = new CDbCriteria();
-                $criteria->condition = 'login=:ID';
-                $criteria->params = array('ID' => $this->_login);
+                $criteria = new CDbCriteria(array(
+                            'condition' => 'login=:ID',
+                            'params' => array(
+                                'ID' => $this->_login
+                            ),
+                        ));
                 $user = User::model()->find($criteria);
 
                 $condition = 'user_id=:ID';
@@ -121,10 +123,21 @@ class UserController extends CController
                     'user' => $user,
                 ));
             }
+            /* ecли логин не указан собственный профиль */
+            else
+            {
+                $condition = 'user_id=:ID';
+                $params = array('ID' => Yii::app()->user->id);
+                $post = Post::model()->count($condition, $params);
+                $user = User::model()->findByPk(Yii::app()->user->id);
+                $this->render('profil', array(
+                    'post' => $post,
+                    'user' => $user,
+                ));
+            }
         }
         else
         {
-
             /* Если просто user то доступен только свой профиль */
             if (Yii::app()->user->checkAccess('user'))
             {
@@ -143,14 +156,6 @@ class UserController extends CController
                 $this->redirect(Yii::app()->homeUrl);
             }
         }
-    }
-
-    /**
-     * 
-     */
-    public function actionTest()
-    {
-        $this->render('registration_ok');
     }
 
 }

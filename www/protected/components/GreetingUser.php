@@ -1,14 +1,11 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of GreetingUser
+ * GreetingUser
+ * В зависимости от времени суток возвращает строкой приветствие
+ * Типа good evening, good morning.
  *
- * @author Admin
+ * @author coder.int21h@gmail.com
  */
 class GreetingUser extends CWidget
 {

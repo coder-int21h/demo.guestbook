@@ -99,9 +99,16 @@
 
 
 
-
             </div><!-- profil-data (End) -->
 
+            
+            
+            <div class="home-ico">
+                <a class="home-ico"href="index.php"></a>
+            </div><!-- home-ico (End) -->
+
+            
+            
         </div><!--  profil (End) -->
 
     </div><!-- content (End) -->

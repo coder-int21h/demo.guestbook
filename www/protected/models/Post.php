@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Post
  * Создает экземпляр Post класса CActiveRecord
@@ -14,7 +9,20 @@
  */
 class Post extends CActiveRecord
 {
+    /**
+     * Ниже приведены доступные столбцы в таблице 'post'
+     * 
+     * @var integer $id
+     * @var integer $user_id
+     * @var string  $content
+     * @var date    $created
+     */
 
+    /**
+     * Возвращает статическую модель указанного класса AR
+     * @param type $className
+     * @return CActiveRecord 
+     */
     public static function model($className=__CLASS__)
     {
         return parent::model($className);

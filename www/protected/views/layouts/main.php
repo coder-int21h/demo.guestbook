@@ -27,7 +27,7 @@
 
             <div class="logo">
 
-                <h1><a href="index.php?r=post/index" alt="logo demo.guestbook"><?php echo CHtml::encode(Yii::app()->name); ?></a></h1>
+                <h1><a href="index.php?r=post/index" ><?php echo CHtml::encode(Yii::app()->name); ?></a></h1>
 
                 <div class="logo-decor">
 

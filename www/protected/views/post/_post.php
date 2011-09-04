@@ -13,7 +13,7 @@
         <div class="author">
             <!-- Если пользователь administraator то доступен просмотр профиля -->
             <?php if (Yii::app()->user->checkAccess('administrator')): ?>
-                <p><a href='index.php?r=user/profil&login=<?php echo $post->author->login; ?> '> <?php echo $post->author->login; ?></a></p>
+                <p><a href='index.php?r=user/profil&amp;login=<?php echo $post->author->login; ?> '> <?php echo $post->author->login; ?></a></p>
             
                 <!-- Если пользователь не админ, то функционал чужого профиля отсутствует -->
             <?php else: ?>

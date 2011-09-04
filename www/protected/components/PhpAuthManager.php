@@ -1,14 +1,10 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of PhpAuthManager
+ * Загружает правила для RBAC из файла applocation/config/auth.php 
  *
- * @author Admin
+ * @author 
  */
 class PhpAuthManager extends CPhpAuthManager
 {

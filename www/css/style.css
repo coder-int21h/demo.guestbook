@@ -638,6 +638,18 @@ body{
 #content .profil .profil-data .data-row .data-value-user p{
     color: #76c376;
 }
+a.home-ico{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    bottom: 30px;
+    right: 45px;
+    background: url(../images/home.png) 0 0 no-repeat;
+}
+
+a.home-ico:hover{
+    background-position: 0px -2px;
+}
 
 #content .pagination {
     position: relative;

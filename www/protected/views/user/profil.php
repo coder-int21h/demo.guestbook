@@ -4,13 +4,15 @@
 
         <h2>user profil:</h2>
 
+        
         <div class="mini-decor">
         </div><!-- mini-decor (End) -->
 
+        
         <div class="profil-data">
 
 
-
+            
             <!-- поле id -->
             <div class="data-row">
 
@@ -100,6 +102,10 @@
 
 
         </div><!-- profil-data (End) -->
+        
+        <div class="home-ico">
+            <a class="home-ico"href="index.php"></a>
+        </div><!-- home-ico (End) -->
 
     </div><!--  profil (End) -->
 

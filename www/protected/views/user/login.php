@@ -1,3 +1,9 @@
+<?php
+/**
+ * Форма авторизации залогиненного пользователя.
+ */
+?>
+
 <div class="user">
     <form method="post" action="index.php?r=user/login">
 

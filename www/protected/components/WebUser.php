@@ -7,8 +7,10 @@
 
 /**
  * Description of WebUser
+ * Реализует получение роли из БД при использовании Yii::app()->user->role
+ * Для этого расширяет класс CWebUser.
  *
- * @author Admin
+ * @author 
  */
 class WebUser extends CWebUser
 {

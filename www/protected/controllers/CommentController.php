@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of CommentController
  *
@@ -14,20 +9,23 @@ class CommentController extends CController
 {
 
     /**
-     *
-     * @var type 
+     * @var CActiveRecord загружает данные экземпляра модели.
      */
     public $_model;
-    public $_postId;
-
     /**
      *
      * @var type 
+     */
+    public $_postId;
+
+    /**
+     * @var CController действие по умолчанию.
      */
     public $defaultAction = 'create';
 
     /**
-     * 
+     *  Создает новую модель.
+     *  Модель доступна только для administrator.
      */
     public function actionCreate()
     {
@@ -50,10 +48,13 @@ class CommentController extends CController
                 $this->render('create', array('comment' => $comment));
             }
         }
+        else
+            $this->redirect(array('/post/index'));
     }
 
     /**
-     * 
+     * Обновление текущей модели.
+     * Обновление доступно только для administrator.
      */
     public function actionUpdate()
     {
@@ -70,13 +71,12 @@ class CommentController extends CController
             $this->render('update', array('comment' => $comment));
         }
         else
-        {
-            $this->redirect(array('/post/index', 'id' => $comment->post_id));
-        }
+            $this->redirect(array('/post/index'));
     }
 
     /**
-     * 
+     * Удаление текущей модели.
+     * Удаление доступно только для administrator
      */
     public function actionDelete()
     {
@@ -87,11 +87,14 @@ class CommentController extends CController
             if (!isset($_GET['ajax']))
                 $this->redirect(array('/post/index'));
         }
+        else
+            $this->redirect(array('/post/index'));
     }
 
     /**
-     *
-     * @return type 
+     * Возвращает данные модели, выбранные по первичному ключу через $_GET['id']
+     * Если данные в модели не найденны, будет http исключение (404)
+     * @return _model 
      */
     public function loadModel()
     {

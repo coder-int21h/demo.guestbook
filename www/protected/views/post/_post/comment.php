@@ -1,4 +1,3 @@
-<!-- КОММЕНТАРИЙ -->
 <div class="comment">
 
     <div class="admin-data">

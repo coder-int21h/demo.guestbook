@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Набор ролей и правил для PhpAuthManager.
+ */
+
+/**
+ * Определенны 3 роли:
+ * 
+ * administrator
+ * user
+ * guest
+ * 
+ */
+
 return array(
     'guest' => array(
         'type' => CAuthItem::TYPE_ROLE,

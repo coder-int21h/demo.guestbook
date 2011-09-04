@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of User
  * Модель таблицы User 
@@ -13,6 +8,15 @@
  */
 class User extends CActiveRecord
 {
+    /**
+     * Ниже приведены доступные столбцы в таблице 'user'
+     * 
+     * @var integer $id
+     * @var string  $login
+     * @var string  $password
+     * @var date    $created
+     * @var role    $profile
+     */
 
     /**
      * Переменная для поля проверки пароля
@@ -26,6 +30,11 @@ class User extends CActiveRecord
      */
     public $verifyCode;
 
+    /**
+     * Возвращает статическую модель указанного класса AR
+     * @param type $className
+     * @return CActiveRecord 
+     */
     public static function model($className=__CLASS__)
     {
         return parent::model($className);
@@ -125,7 +134,7 @@ class User extends CActiveRecord
     }
 
     /**
-     * До записи создает текущие дата/время и добавляет к атрибутам
+     * no comment...
      * @return boolean;
      */
     protected function beforeSave()
@@ -134,6 +143,7 @@ class User extends CActiveRecord
         {
             if ($this->isNewRecord)
             {
+                //$this->password = md5($this->password);
                 $this->created = date('d M Y H:i');
                 $this->role = 'user';
             }
